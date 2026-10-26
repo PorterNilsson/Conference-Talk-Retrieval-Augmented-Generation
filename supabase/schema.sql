@@ -22,6 +22,10 @@ create table if not exists public.sentence_embeddings (
 create index if not exists sentence_embeddings_talk_id_idx
     on public.sentence_embeddings(talk_id);
 
+-- Accelerate cosine nearest-neighbor searches in match_sentences().
+create index if not exists sentence_embeddings_embedding_hnsw_idx
+    on public.sentence_embeddings using hnsw (embedding vector_cosine_ops);
+
 alter table public.sentence_embeddings enable row level security;
 
 drop policy if exists "Allow authenticated users to read" on public.sentence_embeddings;

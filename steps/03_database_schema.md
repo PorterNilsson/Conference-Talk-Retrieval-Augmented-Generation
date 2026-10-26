@@ -33,6 +33,7 @@ This schema creates:
 - **`page_views` table** — Records every page visit (🌍 **public**)
 - **RLS policies** — Controls who can access each table
 - **`match_sentences()` function** — A stored procedure for vector similarity search
+- **HNSW vector index** — Speeds up cosine-similarity lookups over stored embeddings
 
 > 💡 **Ask your AI assistant**: *"What is pgvector and how does cosine similarity search work?"*
 
