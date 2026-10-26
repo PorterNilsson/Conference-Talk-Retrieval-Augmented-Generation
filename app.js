@@ -436,7 +436,7 @@ async function keywordSearch() {
         for (const talk of Object.values(talks)) {
             html += `<div class="result-card">
                 <div class="result-title"><a href="${escapeHtml(talk.url)}" target="_blank" class="result-title-link">${escapeHtml(talk.title)}</a></div>
-                <div class="result-speaker">by ${escapeHtml(talk.speaker)}</div>
+                <div class="result-speaker">by ${displaySpeaker(talk.speaker)}</div>
                 <div class="result-sentences">${talk.sentences.slice(0, 3).join('<br>')}</div>
             </div>`;
         }
@@ -487,7 +487,7 @@ async function semanticSearch() {
                 <div class="result-card-header">
                     <div>
                         <div class="result-title"><a href="${escapeHtml(result.url)}" target="_blank" class="result-title-link">${escapeHtml(result.title)}</a></div>
-                        <div class="result-speaker">by ${escapeHtml(result.speaker)}</div>
+                        <div class="result-speaker">by ${displaySpeaker(result.speaker)}</div>
                     </div>
                     ${badge}
                 </div>
@@ -556,7 +556,7 @@ async function askQuestion() {
                 <div class="result-card-header">
                     <div>
                         <div class="result-title"><span class="source-number">[${index + 1}]</span> <a href="${escapeHtml(talk.url)}" target="_blank" rel="noopener noreferrer" class="result-title-link">${escapeHtml(talk.title)}</a></div>
-                        <div class="result-speaker">by ${escapeHtml(talk.speaker)}</div>
+                        <div class="result-speaker">by ${displaySpeaker(talk.speaker)}</div>
                     </div>
                     ${talkBadge}
                 </div>
@@ -738,6 +738,11 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function displaySpeaker(speaker) {
+    const name = String(speaker || 'Unknown Speaker').replace(/^by\s+/i, '');
+    return escapeHtml(name);
 }
 
 // Similarity badge with color coding
