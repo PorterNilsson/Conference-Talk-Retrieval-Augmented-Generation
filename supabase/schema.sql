@@ -84,6 +84,7 @@ as $$
 $$;
 
 grant select on public.sentence_embeddings to authenticated;
+grant select, insert, update, delete on public.sentence_embeddings to service_role;
 grant select, insert on public.page_views to anon, authenticated;
 revoke all on function public.match_sentences(vector, integer) from public, anon;
 grant execute on function public.match_sentences(vector, integer) to authenticated;
