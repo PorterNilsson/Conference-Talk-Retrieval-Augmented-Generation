@@ -2,6 +2,9 @@
 
 A Retrieval Augmented Generation (RAG) application that lets users ask questions about General Conference talks using semantic search and AI-generated answers.
 
+- **Live site:** https://porternilsson.github.io/Conference-Talk-Retrieval-Augmented-Generation/
+- **Source repository:** https://github.com/PorterNilsson/Conference-Talk-Retrieval-Augmented-Generation
+
 <p align="center">
   <img src="example.png" alt="Conference RAG screenshot" width="600">
   <br>
