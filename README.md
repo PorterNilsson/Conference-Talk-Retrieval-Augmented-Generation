@@ -143,6 +143,20 @@ conference-rag/
 4. Your custom feature description
 5. Written reflection on security, search, and AI-assisted development
 
+## Written Reflection
+
+### Security and architecture
+
+I learned that the publishable key identifies the Supabase project, while Row Level Security (RLS) and the user's JWT determine whether they can read the talk data. The service-role key has broad database privileges and must stay private. The Edge Functions keep the OpenAI key on the server and check that a user is signed in before making OpenAI requests. This prevents visitors from taking the key, though the current app does not limit how many requests a signed-in user can make. Someone could repeatedly call the functions and consume the project's OpenAI budget.
+
+### Search and RAG
+
+Keyword search looks for matching text. Semantic search embeds the question and compares its vector with sentence vectors stored in Supabase. RAG then gives GPT-4o the retrieved talk text so it can form an answer with links back to sources. I understand why new talks can be added by embedding and storing them, without retraining the model.
+
+### Working with an AI assistant
+
+Breaking the project into steps and giving Dashboard instructions worked well. The existing starter instructions shaped the pace and made it difficult to go much faster or slower. Some guidance could have been better: the Mermaid diagram wasn't visible to me, and suggesting DBeaver before considering that I already had `psql` risked adding unnecessary setup. Debugging the Edge Functions would also have been clearer with a local emulator and a closer look at the JWTs and requests sent to OpenAI. Overall, the work helped me understand the RAG flow, and the GitHub integration worked well.
+
 ## 🆘 Troubleshooting
 
 | Issue | Solution |
